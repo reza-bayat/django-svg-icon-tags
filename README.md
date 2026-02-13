@@ -38,15 +38,19 @@
 ```bash
 
 # نصب آخرین نسخه
+
 pip install django-svg-icon-tags
 
 # نصب مستقیم از گیت‌هاب
+
 pip install git+https://github.com/yourusername/django-svg-icon-tags.git
 
 # نصب با کلون مخزن
+
 git clone https://github.com/yourusername/django-svg-icon-tags.git
 cd django-svg-icon-tags
 pip install -e .
+
 ```
 
 
@@ -751,3 +755,4 @@ chmod -R 755 static/
 # بررسی تنظیمات Nginx/Apache
 # مطمئن شوید فایل‌های استاتیک سرو می‌شوند
 ```
+
