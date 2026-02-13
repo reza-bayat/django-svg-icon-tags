@@ -5,23 +5,50 @@
 [![Django Versions](https://img.shields.io/pypi/djversions/django-svg-icon-tags.svg)](https://pypi.org/project/django-svg-icon-tags/)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
-A secure and flexible Django template tag library for rendering SVG icons from multiple icon libraries (Bootstrap Icons, Heroicons, etc.)
 
-## ✨ Features
 
-- ✅ **Multi-library support** - Use Bootstrap Icons, Heroicons, and custom icons
-- ✅ **Security hardened** - XSS protection, path traversal prevention
-- ✅ **Performance optimized** - Smart caching for production
-- ✅ **Accessibility ready** - ARIA labels, titles, focus management
-- ✅ **Tailwind CSS friendly** - Built-in size and color presets
-- ✅ **Flexible rendering** - Inline SVG or `<img>` tag
-- ✅ **Comprehensive error handling** - Fallback icons and debug mode
+---
 
-## 📦 Installation
+## مقدمه
+
+`django_svg_icon_tags` یک پکیج کامل و امن برای رندر کردن آیکون‌های SVG در پروژه‌های Django است که از چندین کتابخانه آیکون محبوب (Bootstrap Icons، Heroicons و آیکون‌های سفارشی) پشتیبانی می‌کند.
+
+این پکیج با ارائه راه‌حلی ساده و قدرتمند، به شما امکان می‌دهد به راحتی آیکون‌های زیبا و تعاملی را در تمپلیت‌های Django خود استفاده کنید.
+
+---
+
+## ویژگی‌ها
+
+✅ **پشتیبانی چندکتابخانه‌ای** - استفاده همزمان از کتابخانه‌های مختلف آیکون  
+✅ **امنیت بالا** - محافظت در برابر حملات XSS و Path Traversal  
+✅ **کش هوشمند** - بهینه‌سازی عملکرد با سیستم کشینگ پیشرفته  
+✅ **دسترسی‌پذیری** - پشتیبانی کامل از ARIA labels و عنوان‌ها  
+✅ **یکپارچه‌سازی Tailwind CSS** - پیش‌تنظیمات اندازه و رنگ آماده  
+✅ **انیمیشن‌های داخلی** - چرخش، وارونه کردن، چرخش پیوسته و ضربان  
+✅ **رندرینگ انعطاف‌پذیر** - پشتیبانی از رندرینگ داخلی و تگ `<img>`  
+✅ **مستندات کامل** - مثال‌های عملی و راهنمایی جامع  
+
+---
+
+
+## نصب
+
+### نصب با استفاده از pip
 
 ```bash
+
+# نصب آخرین نسخه
 pip install django-svg-icon-tags
+
+# نصب مستقیم از گیت‌هاب
+pip install git+https://github.com/yourusername/django-svg-icon-tags.git
+
+# نصب با کلون مخزن
+git clone https://github.com/yourusername/django-svg-icon-tags.git
+cd django-svg-icon-tags
+pip install -e .
 ```
+
 
 ## پیکربندی
 
@@ -83,6 +110,10 @@ SVG_ICON_CACHE_TIMEOUT = 60 * 60 * 24 * 30  # 30 روز
  
 ```
 
+# جمع‌آوری فایل‌های استاتیک (برای محیط تولید)
+```bash
+python manage.py collectstatic
+```
 
 
 ## لود کردن تگ‌ها در تمپلیت
@@ -208,8 +239,6 @@ SVG_ICON_CACHE_TIMEOUT = 60 * 60 * 24 * 30  # 30 روز
 
 ## پارامترهای کامل svg_icon
 ## پارامترهای کامل icon
-
-
 ## مپ‌های اندازه و رنگ
 
 ```python
@@ -401,7 +430,7 @@ color_map = {
 
 ## مثال ۳: کارت محصول
 
-```python
+```html
 {% load svg_icon_tags %}
 
 <div class="max-w-sm bg-white rounded-lg shadow-md overflow-hidden transition-transform hover:scale-105">
@@ -681,4 +710,44 @@ color_map = {
     </div>
   </main>
 </div>
+```
+
+
+## مشکل: آیکون نمایش داده نمی‌شود (خالی است)
+
+```python
+# بررسی تنظیمات استاتیک
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [BASE_DIR / 'static']
+
+# تست دستی آدرس آیکون
+curl http://localhost:8000/static/icons/bootstrap/home.svg
+
+# بررسی کنسول مرورگر برای خطاهای 404
+```
+
+
+## مشکل: کش قدیمی آیکون‌ها
+
+```python
+# پاک کردن کش در کنسول Django
+python manage.py shell
+>>> from django.core.cache import cache
+>>> cache.clear()  # پاک کردن تمام کش
+
+# یا فقط کش آیکون‌ها
+>>> cache.delete_pattern('svg_icon:*')
+```
+
+## مشکل: آیکون‌ها در محیط تولید نمایش داده نمی‌شوند
+
+```bash
+# جمع‌آوری فایل‌های استاتیک
+python manage.py collectstatic --clear
+
+# بررسی دسترسی‌ها
+chmod -R 755 static/
+
+# بررسی تنظیمات Nginx/Apache
+# مطمئن شوید فایل‌های استاتیک سرو می‌شوند
 ```
