@@ -1,0 +1,17 @@
+{% load svg_icon_tags %}
+
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+  {% for category in categories %}
+    <div class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
+      <div class="flex items-center mb-4">
+        {% icon category.icon_name library="heroicons-outline" size="2xl" color="primary" %}
+        <h3 class="text-xl font-bold mr-3">{{ category.name }}</h3>
+      </div>
+      <p class="text-gray-600">{{ category.description }}</p>
+      <a href="{{ category.get_absolute_url }}" class="mt-4 inline-flex items-center text-blue-600 hover:text-blue-800">
+        مشاهده محصولات
+        {% icon "arrow-right" library="heroicons-outline" size="sm" color="blue" class="mr-2" %}
+      </a>
+    </div>
+  {% endfor %}
+</div>

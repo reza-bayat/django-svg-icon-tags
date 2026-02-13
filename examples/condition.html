@@ -1,0 +1,29 @@
+{% load svg_icon_tags %}
+
+<div class="flex items-center">
+  {% if user.is_authenticated %}
+    <span class="text-green-600 font-medium">
+      {% icon "check-circle" library="heroicons-solid" size="sm" color="success" class="ml-1" %}
+      وارد شده‌اید
+    </span>
+  {% else %}
+    <span class="text-red-600 font-medium">
+      {% icon "x-circle" library="heroicons-solid" size="sm" color="danger" class="ml-1" %}
+      وارد نشده‌اید
+    </span>
+  {% endif %}
+</div>
+
+<div class="mt-4">
+  {% if product.in_stock %}
+    <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800">
+      {% icon "check" library="heroicons-solid" size="xs" color="success" class="ml-1" %}
+      موجود در انبار
+    </span>
+  {% else %}
+    <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-red-100 text-red-800">
+      {% icon "x" library="heroicons-solid" size="xs" color="danger" class="ml-1" %}
+      ناموجود
+    </span>
+  {% endif %}
+</div>

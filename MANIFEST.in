@@ -1,0 +1,20 @@
+include LICENSE
+include README.md
+include CHANGELOG.md
+include requirements-dev.txt
+
+recursive-include django_svg_icon_tags/templates *
+recursive-include django_svg_icon_tags/templatetags *.py
+recursive-include tests *
+recursive-include docs *
+recursive-include examples *
+recursive-include icons *
+
+prune docs/_build
+prune .git
+prune .github
+prune .pytest_cache
+prune __pycache__
+prune *.pyc
+prune *.pyo
+prune .DS_Store

@@ -1,0 +1,26 @@
+{% load svg_icon_tags %}
+
+<div class="flex space-x-4 space-x-reverse">
+  {# دکمه لودینگ #}
+  <button class="btn btn-primary" disabled>
+    {% icon "arrow-path" library="heroicons-outline" spin=True size="sm"
+    color="white" %} در حال بارگذاری...
+  </button>
+
+  {# دکمه موفقیت #}
+  <button class="btn btn-success">
+    {% icon "check-circle" library="heroicons-solid" size="sm" color="white" %}
+    تأیید
+  </button>
+
+  {# دکمه خطا #}
+  <button class="btn btn-danger">
+    {% icon "x-circle" library="heroicons-solid" size="sm" color="white" %} لغو
+  </button>
+
+  {# دکمه هشدار #}
+  <button class="btn btn-warning">
+    {% icon "exclamation-triangle" library="heroicons-solid" size="sm"
+    color="white" pulse=True %} هشدار
+  </button>
+</div>

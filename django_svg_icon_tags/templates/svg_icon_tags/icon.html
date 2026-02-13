@@ -1,0 +1,23 @@
+{% comment %}
+============================================================================
+Inclusion Tag Template for SVG Icons
+============================================================================
+This template is used by the {% icon %} inclusion tag.
+
+Context variables:
+- icon_name: Icon filename without extension
+- library: Optional library name (e.g., "bootstrap", "heroicons-outline")
+- class_name: Generated CSS classes for size and color
+============================================================================
+
+Context passed from icon() function:
+  - icon_name: str
+  - library: Optional[str]
+  - class_name: str
+{% endcomment %}
+
+
+{% load svg_icon_tags %}
+
+{# Render the actual SVG icon #}
+{% svg_icon icon_name library=library class_name=class_name %}
